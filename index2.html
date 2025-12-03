@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="fa-IR" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>مدیریت ممحصولات</title>
+  <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- main content -->
+    <main>
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <header>
+          <a href="index.html">
+             <img src="logo.png" class="website-logo" alt="" />
+          </a>
+        </header>
+        <main class="side-menu">
+          <ul class="side-container">
+            <li>
+              <a href="./index.html" class="navlink active">
+                <span class="navicon"><i class="fa-solid fa-house"></i></span>
+                <span class="title">داشبورد</span>
+              </a>
+            </li>
+            <!-- Products -->
+            <li>
+              <a href="index2.html" class="navlink">
+                <span class="navicon"><i class="fa-solid fa-box"></i></span>
+                <span class="title">محصولات</span>
+              </a>
+            </li>
+
+            <li>
+              <a href="index3.html" class="navlink">
+                <span class="navicon"><i class="fa-solid fa-users"></i></span>
+                <span class="title">کاربران</span>
+              </a>
+            </li>
+          </ul>
+        </main>
+        <footer></footer>
+        <button class="toggle-sidebar">
+          <!-- Arrow Right -->
+          <i class="fa-solid fa-angle-left"></i>
+        </button>
+      </aside>
+
+      <!-- Content -->
+      <section class="content">
+        <!-- breadcrumbs -->
+        <div class="breadcrumbs">
+          <a href="/" class="breadcrumb">صفحه اصلی</a>
+          <span class="backslack"> / </span>
+          <a href="/dashboard/products/">محصولات</a>
+        </div>
+
+        <!-- Table -->
+        <div class="table-component">
+          <i class="ui-border emerald top"></i>
+          <!-- Table Header -->
+          <div class="section-header">
+            <div>
+              <p class="title-text">لیست محصولات</p>
+              <p class="products-count-text caption-text">
+                <span class="products-data">0</span>
+                <span> محصول در وبسایت شما وجود دارد </span>
+              </p>
+            </div>
+          <button id="create-product" class="section-link">
+              <span>
+                <span> ایجاد محصول </span>
+                <!-- Plus icon -->
+                <i class="fa-solid fa-plus"></i>
+              </span>
+            </button>
+          </div>
+
+          <!-- Table Head row -->
+          <div class="table-head-row">
+            <p>عنوان محصول</p>
+            <p>قیمت محصول</p>
+            <p>عنوان کوتاه</p>
+            <p>مدیریت</p>
+          </div>
+
+          <!-- Table body (content) -->
+          <div class="table-body" id="table-body-for-product">
+      
+         
+          <!-- Table Footer  -->
+          <!-- <div class="table-footer">
+            Pagination -->
+            <!-- <div class="pagination">
+              <span tabindex="1" class="page">1</span>
+              <span tabindex="1" class="page">2</span>
+              <span tabindex="1" class="page active">3</span>
+              <span tabindex="1" class="page">4</span>
+              <span tabindex="1" class="page">5</span>
+            </div>
+          </div>
+        </div> -->
+      </section>
+    </main>
+    <!-- توست -->
+   <div class="toast hidden" id="toast">
+  <span class="icon-card">
+    <span class="icon"></span>
+  </span>
+
+  <span class="toast-content"></span>
+
+  <div class="process-bar">
+    <div class="process"></div>
+  </div>
+</div>
+
+ 
+<!-- تغیر تم صفحه -->
+    <button class="theme-button">
+      <!-- Moon icon -->
+      <!-- <i class="fas fa-moon"></i> -->
+      <!-- Sun icon -->
+      <i class="fas fa-sun"></i>
+    </button>
+    <!-- Remove Product Modal  -->
+  <div class="modal-screen hidden" id="Remove-Product-Modal">
+      <div class="modal">
+        <i class="ui-border top red"></i>
+        <i class="ui-border bottom red"></i>
+        <header class="modal-header">
+          <h3>حذف محصول</h3>
+          <button class="close-modal">
+            <i class="fas fa-times"></i>
+          </button>
+        </header>
+        <main class="modal-content">
+          <p class="remove-text">آیا از حذف این محصول اطمینان دارید؟</p>
+        </main>
+        <footer class="modal-footer">
+          <button class="cancel">انصراف</button>
+          <button class="submit"  id="confirm-remove">تائید</button>
+        </footer>
+      </div>
+    </div>
+    <!-- Product Edit Modal -->
+    <div class="modal-screen hidden" id="Product-Edit-Modal">
+      <div class="modal">
+            <header class="modal-header">
+            <h3>ویرایش محصول</h3>
+            <button class="close-modal">
+              <i class="fas fa-times"></i>
+            </button>
+          </header>
+          <main class="modal-content">
+            <input type="hidden" id="product-id-edit" />
+
+            <input
+              type="text"
+              class="modal-input"
+              placeholder="عنوان محصول را وارد نمائید ..."
+              id="product-title-edit"
+            />
+            <input
+              type="number"
+              class="modal-input"
+              placeholder="قیمت محصول را وارد نمائید ..."
+              id="product-price-edit"
+            />
+            <input
+             
+              class="modal-input"
+              placeholder="عنوان کوتاه محصول را وارد نمائید ..."
+              id="product-shortName-edit"
+            />
+          </main>
+          <footer class="modal-footer">
+            <button class="cancel">انصراف</button>
+            <button class="submit" id="submit-edit">تائید</button>
+          </footer>
+      </div>
+    </div>
+    <!-- Product create modal -->
+    <div class="modal-screen hidden" id="Product-create-Modal">
+      <div class="modal">
+           <header class="modal-header">
+            <h3>ایجاد محصول</h3>
+            <button class="close-modal">
+              <i class="fas fa-times"></i>
+            </button>
+          </header>
+          <main class="modal-content">
+            <input
+              type="text"
+              class="modal-input"
+              placeholder="عنوان محصول را وارد نمائید ..."
+              id="product-title-add"
+            />
+            <input
+              type="number"
+              class="modal-input"
+              placeholder="قیمت محصول را وارد نمائید ..."
+              id="product-price-add"
+            />
+            <input
+             
+              class="modal-input"
+              placeholder="عنوان کوتاه محصول را وارد نمائید ..."
+              id="product-shortName-add"
+            />
+          </main>
+          <footer class="modal-footer">
+            <button class="cancel">انصراف</button>
+           <button class="submit" id="submit-Add-Product-Btn" type="button">تائید</button>
+          </footer>
+      </div>
+    </div>
+
+    
+  
+      
+    <script src="app.js"></script>
+  </body>
+</html>

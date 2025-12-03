@@ -1,0 +1,256 @@
+<!-- 
+  1: use ".hidden" class to toggle ".TOAST" and ".MODAL-SCREEN"
+
+  2: use insertAdjacentHTML method to change .modal content
+-->
+
+<!DOCTYPE html>
+<html lang="fa-IR" dir="rtl" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>سبزلرن - داشبورد ادمین</title>
+   <link rel="stylesheet" href="styles.css" />
+    <!-- Fontawesome CDNJS 6.6.0 -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header></header>
+
+    <main>
+      <aside class="sidebar">
+        <header>
+          <a href="index.html">
+            <img src="logo.png" class="website-logo" alt="" />
+          </a>
+        </header>
+        <main class="side-menu">
+          <ul class="side-container">
+            <li>
+              <a href="./index.html" class="navlink active">
+                <span class="navicon"><i class="fa-solid fa-house"></i></span>
+                <span class="title">داشبورد</span>
+              </a>
+            </li>
+            <!-- Products -->
+            <li>
+              <a href="index2.html" class="navlink">
+                <span class="navicon"><i class="fa-solid fa-box"></i></span>
+                <span class="title">محصولات</span>
+              </a>
+            </li>
+
+            <li>
+              <a href="index3.html" class="navlink">
+                <span class="navicon"><i class="fa-solid fa-users"></i></span>
+                <span class="title">کاربران</span>
+              </a>
+            </li>
+          </ul>
+        </main>
+        <footer></footer>
+        <button class="toggle-sidebar">
+          <!-- Arrow Right -->
+          <i class="fa-solid fa-angle-left"></i>
+        </button>
+      </aside>
+      <section class="content">
+        <div class="breadcrumbs">
+          <a href="./index.html" class="breadcrumb">داشبورد</a>
+        </div>
+
+        <section class="hero-cards">
+          <article>
+            <i class="ui-border emerald top"></i>
+            <i class="ui-border emerald bottom"></i>
+            <!-- Products icon -->
+            <span class="hero-card-icon products-icon">
+              <i class="fa-solid fa-box"></i>
+            </span>
+            <div>
+              <p class="hero-card-title">محصولات</p>
+              <p class="hero-card-data products-data">0</p>
+            </div>
+          </article>
+          <article>
+            <i class="ui-border indigo top"></i>
+            <i class="ui-border indigo bottom"></i>
+            <!-- Users icon -->
+            <span class="hero-card-icon users-icon">
+              <i class="fa-solid fa-users"></i>
+            </span>
+            <div>
+              <p class="hero-card-title">کاربران</p>
+              <p class="hero-card-data users-data">2</p>
+            </div>
+          </article>
+          <article>
+            <i class="ui-border red top"></i>
+            <i class="ui-border red bottom"></i>
+            <!-- Admins icon -->
+            <span class="hero-card-icon admins-icon">
+              <i class="fa-solid fa-user-tie"></i>
+            </span>
+            <div>
+              <p class="hero-card-title">مدیران</p>
+              <p class="hero-card-data moderators-data">2</p>
+            </div>
+          </article>
+          <article>
+            <i class="ui-border yellow top"></i>
+            <i class="ui-border yellow bottom"></i>
+            <!-- Tickets icon -->
+            <span class="hero-card-icon tickets-icon">
+              <i class="fa-solid fa-ticket"></i>
+            </span>
+            <div>
+              <p class="hero-card-title">تیکت‌ها</p>
+              <p class="hero-card-data ticket-data">2</p>
+            </div>
+          </article>
+        </section>
+
+        <section class="after-hero">
+         <section class="latest-users">
+  <i class="ui-border top indigo"></i>
+  <div class="section-header">
+    <p class="section-title">جدیدترین کاربران</p>
+    <a href="index3.html" class="section-link">
+      بیشتر
+      <i class="fa-solid fa-chevron-left"></i>
+    </a>
+  </div>
+  
+  <!-- کانتینر برای مقالات -->
+  <div class="latest-users-list"></div>
+</section>
+
+          <section class="table-component">
+            <i class="ui-border emerald top"></i>
+            <div class="section-header">
+              <div>
+                <p class="title-text">لیست محصولات</p>
+                <p class="products-count-text caption-text">
+                  <span class="products-data">0</span>
+                  <span> محصول در وبسایت شما وجود دارد </span>
+                </p>
+              </div>
+              <a href="index2.html" class="section-link">
+                <span>
+                  محصولات
+                  <i class="fa-solid fa-chevron-left"></i>
+                </span>
+              </a>
+            </div>
+
+            <div class="table-head-row">
+              <p>عنوان محصول</p>
+              <p>قیمت محصول</p>
+              <p>عنوان کوتاه</p>
+              <p>مدیریت</p>
+            </div>
+
+            <div class="table-body"id="table-body-for-product-page1">
+             
+            
+              
+              </div>
+           
+          </section>
+        </section>
+      </section>
+    </main>
+
+    <footer></footer>
+
+    <div class="toast hidden" id="toast">
+  <span class="icon-card">
+    <span class="icon"></span>
+  </span>
+
+  <span class="toast-content"></span>
+
+  <div class="process-bar">
+    <div class="process"></div>
+  </div>
+</div>
+
+
+   
+
+    <button class="theme-button">
+      <!-- Moon icon -->
+      <!-- <i class="fas fa-moon"></i> -->
+      <!-- Sun icon -->
+      <i class="fas fa-sun"></i>
+    </button>
+
+       <!-- Remove Product Modal  -->
+  <div class="modal-screen hidden" id="Remove-Product-Modal">
+      <div class="modal">
+        <i class="ui-border top red"></i>
+        <i class="ui-border bottom red"></i>
+        <header class="modal-header">
+          <h3>حذف محصول</h3>
+          <button class="close-modal">
+            <i class="fas fa-times"></i>
+          </button>
+        </header>
+        <main class="modal-content">
+          <p class="remove-text">آیا از حذف این محصول اطمینان دارید؟</p>
+        </main>
+        <footer class="modal-footer">
+          <button class="cancel">انصراف</button>
+          <button class="submit"  id="confirm-remove">تائید</button>
+        </footer>
+      </div>
+    </div>
+    <!-- Product Edit Modal -->
+    <div class="modal-screen hidden" id="Product-Edit-Modal">
+      <div class="modal">
+            <header class="modal-header">
+            <h3>ویرایش محصول</h3>
+            <button class="close-modal">
+              <i class="fas fa-times"></i>
+            </button>
+          </header>
+          <main class="modal-content">
+            <input type="hidden" id="product-id-edit" />
+
+            <input
+              type="text"
+              class="modal-input"
+              placeholder="عنوان محصول را وارد نمائید ..."
+              id="product-title-edit"
+            />
+            <input
+              type="number"
+              class="modal-input"
+              placeholder="قیمت محصول را وارد نمائید ..."
+              id="product-price-edit"
+            />
+            <input
+             
+              class="modal-input"
+              placeholder="عنوان کوتاه محصول را وارد نمائید ..."
+              id="product-shortName-edit"
+            />
+          </main>
+          <footer class="modal-footer">
+            <button class="cancel">انصراف</button>
+            <button class="submit" id="submit-edit">تائید</button>
+          </footer>
+      </div>
+    </div>
+  
+    <!-- <footer class="copyright">
+      &copy; توسعه داده شده با 💚 در
+      <a href="https://sabzlearn.ir" target="_blank">سبزلرن</a>
+    </footer> -->
+
+    <script src="app.js"></script>
+  </body>
+</html>
