@@ -32,6 +32,7 @@ const submitRemove = document.querySelectorAll("#submit-Remove"); //
 const submitUserEdit = document.querySelector("#submit-user-edit"); 
 const savedTheme = localStorage.getItem("theme");
 const latestUsersTable = document.querySelector(".latest-users");
+const navlink = document.querySelectorAll(".navlink"); 
 //===============================================================================================================
 
 if (savedTheme === "dark") {
@@ -54,13 +55,12 @@ let productToRemove = null
 let UserToRemove = null 
 //=========================================== toggleMenu =======================================================
 
-toggleMenu.addEventListener("click", function () {
-  document.querySelector(".sidebar").classList.toggle("open");
-});
+toggleMenu.addEventListener("click",  () => 
+  document.querySelector(".sidebar").classList.toggle("open"));
 
 //============================================= function ======================================================
 
-function renderProductsTable(targetElement, productsArray) {
+const renderProductsTable = (targetElement, productsArray) => {
   if (!targetElement) return;
 
   targetElement.innerHTML = '';
@@ -107,13 +107,13 @@ function renderProductsTable(targetElement, productsArray) {
 }
 
 
-function productsDataLengthF() {
+const productsDataLengthF = ()=> {
   productsDataLength.forEach((el) => {
     el.textContent = data.products.length;
   });
 };
 
-function attachProductButtons() {
+const attachProductButtons = () => {
   const editBtns = document.querySelectorAll(".edit-btn");
   const removesBtns = document.querySelectorAll(".remove-btn");
 
@@ -139,11 +139,9 @@ function attachProductButtons() {
   });
 }
 
-function ShowCreatModal(){
-  createProductModal.classList.remove("hidden")
-};
+const ShowCreatModal = ()=> createProductModal.classList.remove("hidden");
 
-function hidModal() {
+const hidModal =() => {
   const modals = [createProductModal, RemoveProductModal, ProductEditModal , createUserModal , userEditModal , RemoveUserModal ];
   modals.forEach(modal => {
     if (modal && !modal.classList.contains("hidden")) {
@@ -152,7 +150,7 @@ function hidModal() {
   });
 };
 
-function AddProduct(event){
+const AddProduct =(event)=> {
   event.preventDefault(); // جلوی رفرش صفحه
 
   const productTitle = document.querySelector("#product-title-add");
@@ -182,13 +180,13 @@ productsDataLengthF()
   showToast("success", "محصول با موفقیت اضافه شد");
 };
 
-function saveInLocalStorage(){
+const saveInLocalStorage = ()=>{
   localStorage.setItem("products", JSON.stringify(data.products));
   localStorage.setItem("User", JSON.stringify(data.users));
 
 };
 
-function getFromLocalStorage(){
+const getFromLocalStorage =() =>{
   const savedUser =localStorage.getItem("User");
   const savedProducts = localStorage.getItem("products");
 if (savedProducts) {
@@ -204,7 +202,7 @@ if(savedUser){
 }
 };
 
-function removeProduct() {
+const removeProduct =()=> {
   if (productToRemove) {
     data.products = data.products.filter(p => p.id != Number(productToRemove));
     saveInLocalStorage();
@@ -214,13 +212,10 @@ renderProductsTable(productTable, data.products.slice(-5));
     showToast("error", "محصول با موفقیت حذف شد");
     // بعد از افزودن، ویرایش یا حذف محصول
 productsDataLengthF()
-
-
-
   }
 };
 
-function editProduct(e){
+const editProduct =(e)=>{
   const id = Number(document.querySelector("#product-id-edit").value);
   const title = document.querySelector("#product-title-edit").value.trim();
   const price = Number(document.querySelector("#product-price-edit").value.trim());
@@ -240,7 +235,7 @@ function editProduct(e){
 
 };
 
-function showToast(type, message) {
+const showToast = (type, message) =>{
   const toast = document.querySelector("#toast");
   const content = toast.querySelector(".toast-content");
   const icon = toast.querySelector(".icon-card");
@@ -274,11 +269,9 @@ function showToast(type, message) {
   }, 2700);
 };
 
-function showUserModal(){
-createUserModal.classList.remove("hidden");
-};
+const showUserModal =()=> createUserModal.classList.remove("hidden");
 
- function addUser(event){
+ const addUser = (event) =>{
  event.preventDefault(); // جلوی رفرش صفحه
  
  
@@ -310,7 +303,7 @@ userDataLength()
 
 };
 
-function renderuserTable(targetElement, usersArray){
+const renderuserTable = (targetElement, usersArray) =>{
   if (!targetElement) return;
 
   targetElement.innerHTML = '';
@@ -393,7 +386,7 @@ if(tableBodyForUsers){
 });
 };
 
-function editUser(e){
+const editUser = (e) =>{
 
   const id = Number(document.querySelector("#user-id-edit").value);
   const name = document.querySelector("#user-fullName").value;
@@ -414,7 +407,7 @@ function editUser(e){
   
 };
 
-function RemoveUser(){
+const  RemoveUser =() =>{
 
   if (UserToRemove) {
     // فیلتر کردن کاربران به جز کاربری که میخوای حذف کنی
@@ -437,12 +430,12 @@ function RemoveUser(){
   }
 };
 
-function userDataLength(){
+const  userDataLength =()=>{
   const usersData = document.querySelector(".users-data");
   console.log(usersData)
  usersData.textContent = data.users.length;
 };
-function latestUsers() {
+const latestUsers =()=> {
   const container = document.querySelector(".latest-users-list");
   if (!container) return;
 
@@ -465,19 +458,17 @@ function latestUsers() {
   });
   userDataLength()
 }
-
+ 
 //================================================ if ===========================================================
 if(submitRemove){
-  submitRemove.forEach(function(submit){
-    submit.addEventListener("click", RemoveUser);
-  })
+  submitRemove.forEach((submit) =>
+    submit.addEventListener("click", RemoveUser)
+)
 };
 
 if (closeModal.length) {
-  closeModal.forEach(function(close){
-    close.addEventListener("click", hidModal)
-    
-  });
+  closeModal.forEach((close) =>close.addEventListener("click", hidModal)
+  );
 };
 
 if (createProductBtn) {
@@ -485,9 +476,7 @@ if (createProductBtn) {
 };
 
 if (cancelBtns) {
-  cancelBtns.forEach(function(cancelBtn){
-    cancelBtn.addEventListener("click", hidModal)
-  })
+  cancelBtns.forEach((cancelBtn)=>  cancelBtn.addEventListener("click", hidModal))
 };
 
 if(submitAddProductBtn) {
@@ -513,7 +502,6 @@ if(submitCreatUser){
 if(submitUserEdit){
   submitUserEdit.addEventListener("click", editUser);
 }
-
 
 
 //============================================================================================================
